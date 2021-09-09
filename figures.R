@@ -31,44 +31,7 @@ critique_reshape <- gather(critique_grades, "MasteryLearning", "Grade", "Mastery
 create_grades <- read_csv("6_create_grades.csv")
 create_reshape <- gather(create_grades, "MasteryLearning", "Grade", "Mastery Learning", "No Mastery Learning")
 
-#Fig. 2: Familiarity with Chart Types, Sorted by Highest Mean Familiarity
-plotML <- familiarity_reshape %>% filter(MasteryLearning=="With") %>%
-  ggplot(aes(x=reorder(Chart, Answer, mean), y=Answer)) +
-  geom_boxplot(fill="#6F54A7") +
-  coord_flip() +
-  theme_minimal()+
-  theme(
-    text=element_text(color="black", family="Roboto"),
-    plot.title = element_text(face="bold",size=22),
-    plot.subtitle=element_text(size=16),
-    axis.text=element_text(color="black",size=16),
-    axis.text.x=element_blank(),
-    axis.title.x=element_blank()
-  ) +
-  labs (title="Familiarity with Chart Types, Sorted by Highest Mean Familiarity", subtitle="Mastery Learning") +
-  xlab("") + ylab("")
-print(plotML)
-
-plotnoML <- familiarity_reshape %>% filter(MasteryLearning=="Without") %>%
-  ggplot(aes(x=reorder(Chart, Answer, mean), y=Answer)) +
-  geom_boxplot(fill="#6FAC36") +
-  coord_flip() +
-  scale_y_continuous(breaks=c(1,2,3), labels=c("Not at all","Somewhat","Very")) +
-  theme_minimal()+
-  theme(
-    text=element_text(color="black", family="Roboto"),
-    plot.subtitle=element_text(size=16),
-    axis.text=element_text(color="black",size=16),
-    axis.title=element_text(color="black",size=16, face="bold")
-  ) +
-  labs (subtitle="No Mastery Learning") +
-  xlab("") + ylab("Familiarity")
-print(plotnoML)
-
-plotML/plotnoML
-ggsave("familiarityall_boxplot_mean.png",height=9, width=12, unit="in")
-
-#Fig. 8: Apply Module Scores
+#Fig. 12: Apply Module Scores
 plot <- 
   ggplot(apply_reshape, aes(y=MasteryLearning, x=Grade)) +
   geom_boxplot(fill=c("#6F54A7","#6FAC36")) +
@@ -86,7 +49,7 @@ plot <-
 print(plot)
 ggsave("apply_grades.png")
 
-#Fig. 13: Confidence with Parallel Coordinates Charts After Completion
+#Fig. 18: Confidence with Parallel Coordinates Charts After Completion
 plot <- end_survey_reshape %>%   
   mutate(question = fct_relevel(question, "Recognize", "Interpret", "Create", "Future Use")) %>% 
   ggplot(aes(x=question, y=answer, fill=MasteryLearning)) +
@@ -107,7 +70,7 @@ plot <- end_survey_reshape %>%
 print(plot)
 ggsave("end_survey_boxplot.png")
 
-#Fig. 14: Confidence in Recognizing Parallel Coordinates Charts
+#Fig. 19: Confidence in Recognizing Parallel Coordinates Charts
 plot <- 
   ggplot(confidence_reshape, aes(x=module, y=answer, fill=MasteryLearning)) +
   geom_boxplot() +
@@ -128,7 +91,7 @@ plot <-
 print(plot)
 ggsave("confidence_boxplot.png")
 
-#Grading for summary figure
+#Fig. 21: Summary Figure
 #Remember
 p1 <- 
   ggplot(remember_reshape, aes(y=MasteryLearning, x=Grade)) +
