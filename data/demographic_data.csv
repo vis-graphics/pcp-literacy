@@ -1,0 +1,27 @@
+MasteryLearning,What is your age?,How would you describe yourself? (Male/Female/Other),Please indicate your highest level of education,Do you have a background in data visualization?,Have you seen a parallel coordinates chart before?
+With,18-24,Female,4-Year College,Yes,Yes
+With,25-44,Female,Graduate Degree,Yes,Yes
+With,18-24,Male,4-Year College,Yes,Unsure
+With,25-44,Male,Graduate Degree,Yes,Unsure
+With,25-44,Male,Graduate Degree,Yes,Yes
+With,18-24,Male,High School Degree or GED,Yes,No
+With,18-24,Male,4-Year College,Maybe,Unsure
+With,25-44,Female,Graduate Degree,No,
+With,25-44,Female,4-Year College,No,
+With,18-24,Female,4-Year College,Maybe,No
+With,18-24,Female,4-Year College,No,
+With,18-24,Male,High School Degree or GED,No,
+With,25-44,Female,Graduate Degree,Yes,No
+With,25-44,Female,Graduate Degree,No,No
+Without,18-24,Male,4-Year College,No,
+Without,25-44,Female,Graduate Degree,No,
+Without,25-44,Male,Graduate Degree,Maybe,No
+Without,25-44,Female,4-Year College,Maybe,No
+Without,25-44,Female,Graduate Degree,No,
+Without,25-44,Male,4-Year College,No,
+Without,45-64,Female,Graduate Degree,Maybe,Unsure
+Without,18-24,Male,4-Year College,No,
+Without,18-24,Male,4-Year College,No,
+Without,18-24,Female,4-Year College,No,
+Without,18-24,Male,High School Degree or GED,Maybe,Yes
+Without,18-24,Male,4-Year College,No,

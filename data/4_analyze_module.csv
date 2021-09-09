@@ -1,0 +1,54 @@
+MasteryLearning,Q2,Q3,Q4,Q6,Q8_1,Q8_2,Q8_3,Q8_4,Q11,Q12,Q13,Q14_1,Q14_2,Q14_3,Q14_4,Q15,Q5
+With,1,2,1,10,4,2,3,1,2,3,2,3,2,1,4,1,"matrix advantage: can more clearly see relationships between variables
+matrix disadvantage: have to look at multiple plots to gather the full picture
+
+coordinates advantage: fewer places to look for information
+coordinates disadvantage: too much clutter"
+With,1,2,1,10,3,4,1,2,2,3,2,2,3,1,4,1,The matrix useful to the user when they want to look at multiple variables and relationships at once.
+With,1,2,1,10,4,2,3,1,2,3,2,3,2,1,4,1,"In the scatterplot matrix you can see relationships between all pairs of variables without having to rearrange anything.  The advantage of the parallel coordinates plot is that when there are more features to examine (more than 3, I'd think), the scatterplot matrix is very large and/or the individual plots get very small.  In that case, you may have to rearrange the axes to be able to find the interesting relationships, but you can more easily see at the same time all of the interesting relationships you find."
+With,1,2,1,10,4,2,3,1,2,3,2,3,2,1,4,1,"Advantage of using the parallel coordinates is that you can draw quicker conclusions about the relationship between the two axis variables. However, this may cause over plotting."
+With,1,2,1,10,4,2,3,1,2,3,2,3,2,1,4,1,"ScatterPlot: 
+Advantage: clear correlation between each attribute 
+Disadvatage: As the attribute increases, became complicated to read
+
+Parallell Coordinates: 
+Advantage: Can handle more data 
+Disadvatage: will have clutters, hard to find one line among all the lines"
+With,1,2,1,10,4,2,3,1,2,3,2,3,2,1,4,1,"Scatterplot gives a more detailed view. The relationship between Horsepower and Miles_per_Gallon can easily be established. 3 of the charts are however necessary and gives no important data to the user. 
+
+Parallel coordinates provide a quick summary to the data but however a relationship between Horsepower and Miles_per_gallon can't be established"
+With,1,2,1,10,4,2,3,1,2,2,2,3,2,1,4,1,"I have experience with scatterplot matrices and I like that I am able to compare everything with each other by looking at one big image, for the parallel coordinates I would have to move an axis around to be able to see relationships of different attributes better. However this also means that if there are too many attributes the scatterplot will be convoluted and the parallel coordinates will present an easier to read graph"
+With,1,2,1,10,4,2,3,1,2,3,2,3,2,1,4,2,"The main advantage offered by parallel coordinate is the representation of high dimensional data as a 2-dimensional visualization. WIthout filters it's hard to read.
+
+Scatterplot is the best method to show you a non-linear pattern. Reading it is straightforward.
+Scatter diagrams cannot give you the exact extent of correlation."
+With,1,2,1,10,4,2,3,1,2,1,2,3,2,1,4,1,"scatterplot: see which area the data are gathering, the correlation between two variables
+Cannot see the relationship between some variables if they are not in the same graph
+
+parallel coordination: shows the slope of some different variables, hard to know the relation between horsepower and MPG(in the above graphs)"
+With,1,2,1,10,4,2,3,1,4,3,2,3,2,1,4,4,"The first one is easy to read, but need to draw many graphs
+The second one has too many lines makes it hard to recognize"
+With,1,2,1,10,1,3,2,4,3,3,2,4,3,1,2,4,scatterplot is messy and confusing but good visualization while parallel coordinates is more organized but the lines can get lost in there
+With,1,2,1,10,1,4,2,3,3,2,2,3,2,4,1,4,for scatter plot its much easier to tell how each data set is emphasized on with in the single set. and for parallel cord is easier to see how the data as a whole set's flow is. 
+With,1,2,1,10,4,2,3,1,2,2,2,3,2,1,4,1,"Scatterplot matrix: can easily see the relation among each attribute, but can get very tiny when expanded Parallel coordinates: can't see relations when axes are not next to each other, but easier to visual"
+With,1,2,1,10,4,2,3,1,2,2,2,3,2,1,4,1,"For the scatterplot matrix you cannot see relations between all 3 measurements but you can see all combinations of relations for each pair. For the parallel coordinates as is you cannot see relations between 'Horsepower' and 'Miles_per_Galon', but you can see data trends for all 3 measurements at once."
+Without,2,1,2,3,2,2,"First one easy to see trend, second one easy to find specific value",10,2,3,1,4,4,3,2,1,1
+Without,1,2,2,2,1,2,"scatter: ad: correlation is more obvious, dis: two many graphs
+parallel: ad: all features in one graph, dis: difficult to find relations ",10,4,2,3,1,3,2,1,4,1
+Without,2,3,2,2,1,1,"The scatter plot matrix is easier to read, however this is less compact. The parallel coordinates is more compact but harder to read.",10,4,2,3,1,3,2,1,4,1
+Without,2,2,2,2,1,1,"scatterplot is easier to read in this case but I would add some colors
+and same for parralel coordinates add color because it is hard to read",9,4,2,3,1,3,2,1,4,4
+Without,2,2,2,2,1,4,A parallel plot allows to study the features of samples for several quantitative variables. Its strength is that the variables can even be completely different: different ranges and even different units.,10,4,2,3,1,3,2,1,4,1
+Without,1,2,2,3,1,2,"The parallel coordinates method is more concise; however, with scatter plot we can see the correlation between the two data more in depth.",12,4,2,3,1,3,2,1,4,1
+Without,2,2,2,2,1,2,"scatterplot is hard to compare all three categories of data at once.
+Parallel Coordinates are little easier to compare all three.",10,4,2,3,1,3,2,1,4,1
+Without,1,2,2,1,1,1,You can see everything at once rather than have to look at all of them seperately.,10,4,2,3,1,3,2,1,4,1
+Without,1,2,2,2,1,2,"easy to compare using coordiante parallel
+scatter plot more complex in using different plots",10,4,2,3,1,4,3,1,2,1
+Without,1,2,2,2,1,1,"Advantage: Matrix is easier to only see the data you want
+Disadvantage: A lot of graphs
+Advantage: All data in one graph
+Disadvantage: All data in one graph",10,1,3,4,2,4,1,3,2,2
+Without,1,1,2,2,1,1,"1. too disperse
+2. too dense in the center",10,4,2,3,1,3,2,1,4,3
+Without,1,3,2,2,1,2,...,10,4,2,3,1,3,2,1,4,1
