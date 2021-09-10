@@ -2,15 +2,24 @@ library(tidyverse)
 library(extrafont)
 library(patchwork)
 
-#Data
+###Data
 end_survey <- read_csv("end_survey.csv")
-end_survey_reshape <- gather(end_survey, "question", "answer", "Recognize", "Interpret", "Create", "Future Use", -"MasteryLearning")
+end_survey_reshape <- gather(end_survey, "question", "answer", "Learn", "Recognize", "Interpret", "Create", "FutureUse", -"MasteryLearning")
 
 confidence <- read_csv("confidence_over_modules.csv")
 confidence_reshape <- gather(confidence, "module", "answer", "Module 1", "Module 2", "End of Modules", -"MasteryLearning")
 
 chart_familiarity <- read_csv("chart_familiarity.csv")
 familiarity_reshape <- gather(chart_familiarity, "Chart", "Answer", "Line", "Bar", "Stacked Bar", "Percent Stacked Bar", "Pie", "Histogram","Scatterplot","Bubble","Stacked Area","Choropleth","Treemap","Area", -"MasteryLearning")
+
+apply_chart_grades <- read_csv("apply_chart_grades.csv")
+apply_chart_reshape <- gather(apply_chart_grades, "MasteryLearning", "Grade", "Mastery Learning", "No Mastery Learning")
+
+duration <- read_csv("duration.csv")
+duration$minutes <- duration$TotalTime/60
+#duration_reshape <- gather(duration, "module", "time", "Mod1", "Mod2a", "Mod2b", -"ML")
+
+view(duration)
 
 #Grading
 remember_grades <- read_csv("1_remember_grades.csv")
@@ -31,9 +40,10 @@ critique_reshape <- gather(critique_grades, "MasteryLearning", "Grade", "Mastery
 create_grades <- read_csv("6_create_grades.csv")
 create_reshape <- gather(create_grades, "MasteryLearning", "Grade", "Mastery Learning", "No Mastery Learning")
 
+###Figures in paper
 #Fig. 12: Apply Module Scores
 plot <- 
-  ggplot(apply_reshape, aes(y=MasteryLearning, x=Grade)) +
+  ggplot(apply_chart_reshape, aes(y=MasteryLearning, x=Grade)) +
   geom_boxplot(fill=c("#6F54A7","#6FAC36")) +
   scale_y_discrete(labels=c("Mastery Learning","No Mastery Learning")) +
   theme_minimal()+
@@ -50,8 +60,8 @@ print(plot)
 ggsave("apply_grades.png")
 
 #Fig. 18: Confidence with Parallel Coordinates Charts After Completion
-plot <- end_survey_reshape %>%   
-  mutate(question = fct_relevel(question, "Recognize", "Interpret", "Create", "Future Use")) %>% 
+plot <- end_survey_reshape %>% filter(question !="Learn") %>% 
+  mutate(question = fct_relevel(question, "Recognize", "Interpret", "Create", "FutureUse")) %>% 
   ggplot(aes(x=question, y=answer, fill=MasteryLearning)) +
   geom_boxplot() +
   scale_y_continuous(breaks=c(1:7), labels=c("1 (Low)", 2:6, "7 (High)")) +
@@ -146,6 +156,7 @@ p3 <-
   xlab("") + ylab("")
 print(p3)
 
+view(apply_grades)
 #Analyze
 p4 <- 
   ggplot(analyze_reshape, aes(y=MasteryLearning, x=Grade)) +
@@ -202,3 +213,81 @@ print(p6)
 
 p1/p2/p3/p4/p5/p6
 ggsave("summaryfigure.png", height=9, width=6, unit="in")
+
+###Supplemental figures
+#Familiarity with Chart Types, Sorted by Highest Mean Familiarity
+plotML <- familiarity_reshape %>% filter(MasteryLearning=="With") %>%
+  ggplot(aes(x=reorder(Chart, Answer, mean), y=Answer)) +
+  geom_boxplot(fill="#6F54A7") +
+  coord_flip() +
+  theme_minimal()+
+  theme(
+    text=element_text(color="black", family="Roboto"),
+    plot.title = element_text(face="bold",size=22),
+    plot.subtitle=element_text(size=16),
+    axis.text=element_text(color="black",size=16),
+    axis.text.x=element_blank(),
+    axis.title.x=element_blank()
+  ) +
+  labs (title="Familiarity with Chart Types, Sorted by Highest Mean Familiarity", subtitle="Mastery Learning") +
+  xlab("") + ylab("")
+print(plotML)
+
+plotnoML <- familiarity_reshape %>% filter(MasteryLearning=="Without") %>%
+  ggplot(aes(x=reorder(Chart, Answer, mean), y=Answer)) +
+  geom_boxplot(fill="#6FAC36") +
+  coord_flip() +
+  scale_y_continuous(breaks=c(1,2,3), labels=c("Not at all","Somewhat","Very")) +
+  theme_minimal()+
+  theme(
+    text=element_text(color="black", family="Roboto"),
+    plot.subtitle=element_text(size=16),
+    axis.text=element_text(color="black",size=16),
+    axis.title=element_text(color="black",size=16, face="bold")
+  ) +
+  labs (subtitle="No Mastery Learning") +
+  xlab("") + ylab("Familiarity")
+print(plotnoML)
+
+plotML/plotnoML
+ggsave("familiarityall_boxplot_mean.png",height=9, width=12, unit="in")
+
+#Minutes spent on modules
+plot <- duration %>% filter(TotalTime!=168628) %>%
+  ggplot(aes(x=minutes, y=MasteryLearning)) +
+  geom_boxplot(fill=c("#6F54A7","#6FAC36")) +
+  scale_y_discrete(labels=c("Mastery Learning", "No Mastery Learning")) +
+  scale_x_continuous(n.breaks=10) +
+  theme_minimal()+
+  theme(
+    text=element_text(color="black", family="Roboto"),
+    plot.title = element_text(face="bold",size=22),
+    plot.subtitle=element_text(size=16),
+    axis.text=element_text(color="black",size=16),
+    axis.title.x=element_blank()
+  ) +
+  labs (title="Minutes Spent on Modules") +
+  xlab("") + ylab("")
+print(plot)
+ggsave("duration_boxplot.png", width=10, height=6, unit="in")
+
+#How Much Respondents Felt They Had Learned after Completion
+plot <- end_survey_reshape %>% filter(question=="Learn") %>%
+  ggplot(aes(x=question, y=answer, fill=MasteryLearning)) +
+  geom_boxplot() +
+  scale_y_continuous(breaks=c(1:5), labels=c("1 (Learned little)", 2:4, "5 (Learned a lot)")) +
+  scale_fill_manual(values=c("#6F54A7","#6FAC36")) +
+  theme_minimal()+
+  theme(
+    text=element_text(color="black", family="Roboto"),
+    plot.title = element_text(face="bold",size=16),
+    axis.text=element_text(color="black",size=16),
+    axis.text.x=element_blank(),
+    axis.title=element_text(color="black",face="bold",size=16),
+    legend.title=element_text(color="black",size=16),
+    legend.text=element_text(color="black",size=16)
+  ) +
+  labs(title="How Much Respondents Felt They Had Learned after Completion", fill="Mastery Learning") +
+  xlab("") + ylab("Confidence")
+print(plot)
+ggsave("end_survey_boxplot_learn.png", width=9, height=6, unit="in")
