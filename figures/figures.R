@@ -12,8 +12,8 @@ confidence_reshape <- gather(confidence, "module", "answer", "Module 1", "Module
 chart_familiarity <- read_csv("chart_familiarity.csv")
 familiarity_reshape <- gather(chart_familiarity, "Chart", "Answer", "Line", "Bar", "Stacked Bar", "Percent Stacked Bar", "Pie", "Histogram","Scatterplot","Bubble","Stacked Area","Choropleth","Treemap","Area", -"MasteryLearning")
 
-apply_chart_grades <- read_csv("apply_chart_grades.csv")
-apply_chart_reshape <- gather(apply_chart_grades, "MasteryLearning", "Grade", "Mastery Learning", "No Mastery Learning")
+apply_chart_scores <- read_csv("3_apply_scores.csv")
+apply_chart_reshape <- gather(apply_chart_scores, "MasteryLearning", "Grade", "Mastery Learning", "No Mastery Learning")
 
 duration <- read_csv("duration.csv")
 duration$minutes <- duration$TotalTime/60
