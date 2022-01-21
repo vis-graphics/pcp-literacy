@@ -1,6 +1,6 @@
 # Evaluating Bloom’s Taxonomy-based Learning Modules for Parallel Coordinates Literacy
 
-This is the GitHub repository for our EuroVis 2022 submission.
+This is the GitHub repository for our Eurographics Education 2022 submission.
 
 <a href="https://github.com/vis-graphics/pcp-literacy/tree/main/data">Data</a> folder: CSVs of participant responses for each module and accuracy grades (percent from ML and NML groups that answered correctly) for each question, as well as other data used in our figures like time spent on modules and confidence over modules
 
